@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>guiemneee</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6f0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Courier New', monospace;
+      position: relative;
+    }
+
+    #introScreen {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #ffe6f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    #loadGif {
+      width: 200px;
+    }
+
+    #startIntroBtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #ef5da8;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      display: none;
+      cursor: pointer;
+    }
+
+    #welcomeScreen {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #ffe6f0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 900;
+    }
+
+    #welcomeImg {
+      width: 300px;
+      margin-bottom: 20px;
+    }
+    .falling {
+      position: fixed;
+      top: -50px;
+      z-index: 999;
+      pointer-events: auto;
+      animation-name: fall;
+      animation-timing-function: linear;
+      cursor: pointer;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    #startBtn {
+      padding: 12px 20px;
+      font-size: 18px;
+      background-color: #efa2cf;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    #mainScreen {
+      display: none;
+      transition: opacity 1s ease;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    #nha, #honuoc, #homthu, #bird, #mattroi, #dammay, #dammay2, #thongbao {
+      position: absolute;
+    }
+
+    #nha {
+      width: 550px;
+      height: 550px;
+      left: 30px;
+      top: calc(25% - 175px);
+      z-index: 1;
+    }
+
+    #honuoc {
+      width: 300px;
+      height: 300px;
+      bottom: 0;
+      right: 0;
+      z-index: 0;
+    }
+
+    #homthu {
+      width: 200px;
+      height: 200px;
+      left: calc(50% - 100px);
+      top: calc(50% - 100px);
+      z-index: 1;
+    }
+
+    #bird {
+      width: 150px;
+      display: none;
+      transition: all 0.5s ease-in-out;
+      z-index: 2;
+    }
+
+    #mattroi {
+      width: 100px;
+      height: 100px;
+      top: 40px;
+      left: 60px;
+      z-index: 0;
+    }
+
+    #dammay, #dammay2 {
+      width: 250px;
+      height: 150px;
+      z-index: 0;
+    }
+
+    #dammay {
+      top: 30px;
+      left: calc(50% + 50px);
+    }
+
+    #dammay2 {
+      top: 10px;
+      left: calc(50% - 250px);
+    }
+
+    #thongbao {
+      width: 200px;
+      height: 150px;
+      bottom: 100px;
+      right: 350px;
+      display: none;
+      z-index: 1;
+    }
+
+    #message {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 75%;
+      font-size: 28px;
+      font-weight: bold;
+      color: #d63384;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #openLetterBtn {
+      position: absolute;
+      top: 82%;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #ff6699;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: none;
+      animation: blink 1s infinite;
+      z-index: 5;
+    }
+
+    #letterCover, #letterContent {
+      position: absolute;
+      width: 600px;
+      height: 700px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      display: none;
+      transition: opacity 1s ease;
+      z-index: 10;
+    }
+
+    #letterCover.show,
+    #letterContent.show {
+      display: block;
+      opacity: 1;
+    }
+    .wishMessage {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      font-weight: bold;
+      color: #d63384;
+      background-color: #fff0f5;
+      padding: 10px 16px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      z-index: 9999;
+      animation: floatDown 6s ease forwards;
+      pointer-events: none;
+      transform: translateX(-50%); /* giữ lại nếu muốn canh giữa theo chữ */
+    }
+
+    @keyframes floatDown {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(200px); /* di chuyển nhẹ xuống 200px */
+        opacity: 0;
+      }
+    }
+    #letterCover.fade-out {
+      opacity: 0;
+    }
+    #noteBox {
+      position: absolute;
+      top: 80%;
+      right: 30px;
+      width: 350px;
+      padding: 12px;
+      background-color: #fff0f5;
+      border: 2px dashed #d63384;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #d63384;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      opacity: 0;
+      display: none;
+      transition: opacity 1s ease;
+      z-index: 15;
+    }
+    #noteBox.show {
+      display: block;
+      opacity: 1;
+    }
+    audio, video {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Màn hình mở đầu -->
+  <div id="introScreen">
+    <img id="loadGif" src="load.gif" alt="Loading..." />
+    <button id="startIntroBtn">👉Start👈</button>
+    <audio id="helloSound" src="hello.mp3"></audio>
+  </div>
+
+  <!-- Màn hình chào -->
+  <div id="welcomeScreen">
+    <img id="welcomeImg" src="hellocutee.gif" alt="Xin chào" />
+    <button id="startBtn">Click tiếp vào đây nèe !!!</button>
+  </div>
+
+  <!-- Màn hình chính -->
+  <div id="mainScreen">
+    <img id="nha" src="nha222.png" alt="Ngôi nhà" />
+    <img id="homthu" src="homthu.png" alt="Hòm thư" />
+    <img id="mattroi" src="mattroi.gif" alt="Mặt trời" />
+    <img id="dammay" src="may23.png" alt="Đám mây" />
+    <img id="dammay2" src="dammay2.png" alt="Đám mây 2" />
+    <img id="honuoc" src="honuoc.png" alt="Hồ nước" />
+    <img id="thongbao" src="thongbao.png" alt="Thông báo" />
+    <img id="bird" src="bocauduathu.gif" alt="Chim bồ câu" />
+    <div id="message">Thảo ơi! cậu có thư này💌</div>
+  </div>
+  <div id="noteBox">Hi,sorry anh viết chữ hơi xấu, em ráng đọc nha :<  À, click vào những icon rơi xuống có bất ngờ nữa á !</div>
+
+  <audio id="flapSound" src="dapcanh.mp3"></audio>
+  <audio id="bellSound" src="tiengchuong.mp3"></audio>
+  <audio id="goodSound" src="good.mp3"></audio>
+
+  <button id="openLetterBtn">Ấn vào đây để mở thư nha ><</button>
+  <img id="letterCover" src="biathu.jpg" alt="Bìa thư" />
+  <img id="letterContent" src="noidungthu.jpg" alt="Nội dung thư" />
+
+  <script>
+    const introScreen = document.getElementById("introScreen");
+    const loadGif = document.getElementById("loadGif");
+    const startIntroBtn = document.getElementById("startIntroBtn");
+    const welcomeScreen = document.getElementById("welcomeScreen");
+    const helloSound = document.getElementById("helloSound");
+    const startBtn = document.getElementById("startBtn");
+    const bird = document.getElementById("bird");
+    const message = document.getElementById("message");
+    const flapSound = document.getElementById("flapSound");
+    const bellSound = document.getElementById("bellSound");
+    const homthu = document.getElementById("homthu");
+    const openLetterBtn = document.getElementById("openLetterBtn");
+    const letterPaper = document.getElementById("letterPaper");
+    const mainScreen = document.getElementById("mainScreen");
+    const letterCover = document.getElementById("letterCover");
+    const letterContent = document.getElementById("letterContent");
+    const goodSound = document.getElementById("goodSound");
+    let lastMessages = [];
+    let moveCount = 0;
+    const maxMoves = 30;
+    let currentX = window.innerWidth - 170;
+    let currentY = 30;
+
+    const mailboxX = 500;
+    const mailboxY = 300;
+    const finalX = mailboxX + 25;
+    const finalY = mailboxY - 80;
+
+    window.onload = () => {
+      setTimeout(() => {
+        loadGif.style.display = "none";
+        startIntroBtn.style.display = "block";
+      }, 2500);
+    };
+
+    startIntroBtn.addEventListener("click", () => {
+      setTimeout(() => {
+        helloSound.volume = 0.3;
+        helloSound.play();
+        
+      }, 10);
+
+      introScreen.style.display = "none";
+      welcomeScreen.style.display = "flex";
+    });
+
+    startBtn.addEventListener("click", () => {
+      welcomeScreen.style.display = "none";
+      mainScreen.style.display = "block"; // Đảm bảo mainScreen được bật
+      moveCount = 0;
+      // Tính lại vị trí hộp thư ngay lúc này
+      const mailboxX = homthu.offsetLeft;
+      const mailboxY = homthu.offsetTop;
+      const finalX = mailboxX + 25;
+      const finalY = mailboxY - 80;
+
+      bird.style.left = `${currentX}px`;
+      bird.style.top = `${currentY}px`;
+      bird.style.display = "block";
+      flapSound.currentTime = 0;
+      flapSound.play();
+
+      moveBird(finalX, finalY);
+    });
+
+    function moveBird(finalX, finalY) {
+      if (moveCount < maxMoves) {
+        let deltaX, deltaY;
+        if (moveCount < maxMoves / 2) {
+          deltaX = (Math.random() - 0.7) * 100;
+          deltaY = Math.random() * 40;
+        } else {
+          const toCenterX = finalX - currentX;
+          const toCenterY = finalY - currentY;
+          deltaX = toCenterX * 0.2 + (Math.random() - 0.5) * 40;
+          deltaY = toCenterY * 0.2 + (Math.random() - 0.5) * 30;
+        }
+
+        currentX += deltaX;
+        currentY += deltaY;
+        currentX = Math.min(window.innerWidth - 150, Math.max(0, currentX));
+        currentY = Math.min(window.innerHeight - 150, Math.max(0, currentY));
+        bird.style.left = `${currentX}px`;
+        bird.style.top = `${currentY}px`;
+        moveCount++;
+        setTimeout(() => moveBird(finalX, finalY), 300);
+      } else {
+        bird.style.left = `${finalX}px`;
+        bird.style.top = `${finalY}px`;
+        flapSound.pause();
+        flapSound.currentTime = 0;
+        flapSound.style.display = "none";
+        bellSound.play();
+        setTimeout(() => {
+          message.style.opacity = 1;
+          document.getElementById("thongbao").style.display = "block";
+          setTimeout(() => {
+            openLetterBtn.style.display = "block";
+          }, 1500);
+        }, 800);
+      }
+    }
+    function createFallingItem(src, sizeMin = 30, sizeMax = 50, durationMin = 6, durationMax = 9) {
+      const item = document.createElement("img");
+      item.src = src;
+      item.className = "falling";
+      const size = sizeMin + Math.random() * (sizeMax - sizeMin);
+      item.style.width = `${size}px`;
+      item.style.left = `${Math.random() * window.innerWidth}px`;
+      item.style.animationDuration = `${durationMin + Math.random() * (durationMax - durationMin)}s`;
+
+
+
+    item.addEventListener("click", () => {
+      let message = "";
+      let options = [];
+
+      if (src.includes("ngoisao")) {
+        options = [
+          "✨ Chúc bạn luôn tỏa sáng lấp lánh như những vì sao ✨",
+          "🌟 Bạn không cần hoàn hảo, chỉ cần tỏa sáng đúng lúc.",
+          "🌟 Gửi bạn một ngôi sao nhỏ, hy vọng bạn thấy ấm áp hơn !",
+          "🌟 Gửi bạn một ngôi sao may mắn nè ✨.",
+          "🌟 Trên bầu trời đêm, luôn có một vì sao sáng dành riêng cho bạn."
+        ];
+      } else if (src.includes("co4laa")) {
+        options = [
+          "🍀 Gửi em một nhành cỏ bốn lá – chúc em thật nhiều may mắn!",
+          "🍀 Mỗi chiếc lá đều ý nghĩa: niềm tin – hy vọng – tình yêu – may mắn. Chúc em có đủ cả!",
+          "🍀 Cỏ 4 lá rất hiếm. Giống như bạn vậy đó ^_^",
+          "🍀 Có thể hôm nay bạn không thấy may mắn, nhưng chính bạn lại là “cỏ bốn lá” trong mắt tui đó >.<",
+          "🍀 Chúc em những điều tốt lành nhất >.<"
+        ];
+      } else if (src.includes("traitim")) {
+        options = [
+          "❤️ Gửi em một ngàn yêu thươngg ><",
+          "❤️ Chúc bạn một ngày tốt lành, không vì điều gì to lớn, chỉ vì bạn xứng đáng :<",
+          "❤️ Chỉ cần mỗi ngày bạn cười tươi, thế là đủ rồi ^^",
+          "❤️ Gửi bạn một trái tim nhỏ, mong bạn luôn cảm thấy ấm áp và bình yên <3"
+        ];
+      }
+
+      // ❌ Loại bỏ 3 câu gần nhất khỏi danh sách
+      const filtered = options.filter(opt => !lastMessages.includes(opt));
+      const listToUse = filtered.length > 0 ? filtered : options;
+
+      // 🎲 Chọn ngẫu nhiên
+      message = listToUse[Math.floor(Math.random() * listToUse.length)];
+
+      // ✅ Cập nhật hàng đợi lastMessages
+      lastMessages.push(message);
+      if (lastMessages.length > 3) lastMessages.shift();
+
+      showWish(message);
+      item.remove();
+    });
+
+      document.body.appendChild(item);
+      setTimeout(() => item.remove(), 8000);
+    }
+    function startFallingAll() {
+      const images = ["co4laa.png", "ngoisao.png", "traitim.png"];
+      setInterval(() => {
+        const imgSrc = images[Math.floor(Math.random() * images.length)];
+        createFallingItem(imgSrc);
+      }, 400);
+    }
+    openLetterBtn.addEventListener("click", () => {
+    mainScreen.classList.add("fade-out");
+    openLetterBtn.style.display = "none";
+
+    setTimeout(() => {
+      mainScreen.style.display = "none";
+      letterCover.classList.add("show");
+
+      // Sau 3 giây thì làm mờ bìa và hiện nội dung
+      setTimeout(() => {
+        letterCover.classList.add("fade-out");
+
+        setTimeout(() => {
+          letterCover.style.display = "none";
+          letterContent.classList.add("show");
+          setTimeout(() => {
+            document.getElementById("noteBox").classList.add("show");
+            goodSound.volume = 0.1;
+            goodSound.play();            
+            setTimeout(startFallingAll, 1000);
+          }, 9500);
+                
+        }, 1000); // Đợi hiệu ứng mờ hoàn tất (1 giây)
+      }, 2000); // Sau khi bìa hiện 3 giây
+    }, 1000);
+    });
+    function showWish(text) {
+      const msg = document.createElement("div");
+      msg.className = "wishMessage";
+      msg.textContent = text;
+
+      // Tạo vị trí ngẫu nhiên phía trên màn hình
+      const startLeft = Math.random() * 80 + 10; // 10% đến 90%
+      const startTopPx = Math.random() * 50 + 30; // cách trên 30px đến 130px
+
+      msg.style.left = `${startLeft}%`;
+      msg.style.top = `${startTopPx}px`;
+
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 6000);
+    }  
+  </script>
+</body>
+</html>
