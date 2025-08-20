@@ -26,9 +26,7 @@
       z-index: 1000;
     }
 
-    #loadGif {
-      width: 200px;
-    }
+    #loadGif { width: 200px; }
 
     #startIntroBtn {
       margin-top: 20px;
@@ -54,10 +52,7 @@
       z-index: 900;
     }
 
-    #welcomeImg {
-      width: 300px;
-      margin-bottom: 20px;
-    }
+    #welcomeImg { width: 300px; margin-bottom: 20px; }
 
     #startBtn {
       padding: 12px 20px;
@@ -79,174 +74,96 @@
       display: none;
       transition: opacity 1s ease;
     }
-
-    .fade-out {
-      opacity: 0;
-    }
+    .fade-out { opacity: 0; }
 
     #nha, #honuoc, #homthu, #bird, #mattroi, #dammay, #dammay2, #thongbao {
       position: absolute;
     }
 
     #nha {
-      width: 550px;
-      height: 550px;
-      left: 30px;
-      top: calc(25% - 175px);
+      width: 550px; height: 550px;
+      left: 30px; top: calc(25% - 175px);
       z-index: 1;
     }
 
-    #honuoc {
-      width: 300px;
-      height: 300px;
-      bottom: 0;
-      right: 0;
-      z-index: 0;
-    }
+    #honuoc { width: 300px; height: 300px; bottom: 0; right: 0; z-index: 0; }
 
-    #homthu {
-      width: 200px;
-      height: 200px;
-      left: calc(50% - 100px);
-      top: calc(50% - 100px);
-      z-index: 1;
-    }
+    #homthu { width: 200px; height: 200px; left: calc(50% - 100px); top: calc(50% - 100px); z-index: 1; }
 
-    #bird {
-      width: 150px;
-      display: none;
-      transition: all 0.5s ease-in-out;
-      z-index: 2;
-    }
+    #bird { width: 150px; display: none; transition: all 0.5s ease-in-out; z-index: 2; }
 
-    #mattroi {
-      width: 100px;
-      height: 100px;
-      top: 40px;
-      left: 60px;
-      z-index: 0;
-    }
+    #mattroi { width: 100px; height: 100px; top: 40px; left: 60px; z-index: 0; }
 
-    #dammay, #dammay2 {
-      width: 250px;
-      height: 150px;
-      z-index: 0;
-    }
+    #dammay, #dammay2 { width: 250px; height: 150px; z-index: 0; }
+    #dammay { top: 30px; left: calc(50% + 50px); }
+    #dammay2 { top: 10px; left: calc(50% - 250px); }
 
-    #dammay {
-      top: 30px;
-      left: calc(50% + 50px);
-    }
-
-    #dammay2 {
-      top: 10px;
-      left: calc(50% - 250px);
-    }
-
-    #thongbao {
-      width: 200px;
-      height: 150px;
-      bottom: 100px;
-      right: 350px;
-      display: none;
-      z-index: 1;
-    }
+    #thongbao { width: 200px; height: 150px; bottom: 100px; right: 350px; display: none; z-index: 1; }
 
     #message {
       position: absolute;
-      width: 100%;
-      text-align: center;
-      top: 75%;
-      font-size: 28px;
-      font-weight: bold;
-      color: #d63384;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
+      width: 100%; text-align: center;
+      top: 75%; font-size: 28px;
+      font-weight: bold; color: #d63384;
+      opacity: 0; transition: opacity 1s ease-in-out;
     }
 
     #openLetterBtn {
       position: absolute;
-      top: 82%;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 82%; left: 50%; transform: translateX(-50%);
       padding: 12px 24px;
       font-size: 18px;
       background-color: #ff6699;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      display: none;
+      color: white; border: none; border-radius: 8px;
+      cursor: pointer; display: none;
       animation: blink 1s infinite;
       z-index: 5;
     }
 
     #letterCover, #letterContent {
       position: absolute;
-      width: 600px;
-      height: 700px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 0;
-      display: none;
-      transition: opacity 1s ease;
-      z-index: 10;
+      width: 600px; height: 700px;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      opacity: 0; display: none;
+      transition: opacity 1s ease; z-index: 10;
     }
 
-    #letterCover.show,
-    #letterContent.show {
-      display: block;
-      opacity: 1;
-    }
-
-    #letterCover.fade-out {
-      opacity: 0;
-    }
+    #letterCover.show, #letterContent.show { display: block; opacity: 1; }
+    #letterCover.fade-out { opacity: 0; }
 
     #noteBox {
       position: absolute;
-      top: 80%;
-      right: 30px;
-      width: 350px;
-      padding: 12px;
+      top: 80%; right: 30px;
+      width: 350px; padding: 12px;
       background-color: #fff0f5;
       border: 2px dashed #d63384;
       border-radius: 10px;
-      font-size: 16px;
-      color: #d63384;
-      font-weight: bold;
+      font-size: 16px; color: #d63384; font-weight: bold;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      opacity: 0;
-      display: none;
-      transition: opacity 1s ease;
-      z-index: 15;
+      opacity: 0; display: none;
+      transition: opacity 1s ease; z-index: 15;
     }
-    #noteBox.show {
-      display: block;
-      opacity: 1;
-    }
-    audio, video {
-      display: none;
-    }
+    #noteBox.show { display: block; opacity: 1; }
+
+    audio, video { display: none; }
   </style>
 </head>
 <body>
 
-  <!-- Intro -->
+  <!-- Màn hình mở đầu -->
   <div id="introScreen">
     <img id="loadGif" src="load.gif" alt="Loading..." />
     <button id="startIntroBtn">👉Start👈</button>
     <audio id="helloSound" src="hello.mp3"></audio>
   </div>
 
-  <!-- Welcome -->
+  <!-- Màn hình chào -->
   <div id="welcomeScreen">
     <img id="welcomeImg" src="hellocutee.gif" alt="Xin chào" />
     <button id="startBtn">Click tiếp vào đây nèe !!!</button>
   </div>
 
-  <!-- Main -->
+  <!-- Màn hình chính -->
   <div id="mainScreen">
     <img id="nha" src="nha222.png" alt="Ngôi nhà" />
     <img id="homthu" src="homthu.png" alt="Hòm thư" />
@@ -262,6 +179,7 @@
 
   <audio id="flapSound" src="dapcanh.mp3"></audio>
   <audio id="bellSound" src="tiengchuong.mp3"></audio>
+  <audio id="goodSound" src="good.mp3"></audio>
 
   <button id="openLetterBtn">Ấn vào đây để mở thư nha ><</button>
   <img id="letterCover" src="biathu.jpg" alt="Bìa thư" />
@@ -283,6 +201,7 @@
     const mainScreen = document.getElementById("mainScreen");
     const letterCover = document.getElementById("letterCover");
     const letterContent = document.getElementById("letterContent");
+    const goodSound = document.getElementById("goodSound");
     let moveCount = 0;
     const maxMoves = 30;
     let currentX = window.innerWidth - 170;
@@ -300,7 +219,6 @@
         helloSound.volume = 0.3;
         helloSound.play();
       }, 10);
-
       introScreen.style.display = "none";
       welcomeScreen.style.display = "flex";
     });
@@ -309,7 +227,6 @@
       welcomeScreen.style.display = "none";
       mainScreen.style.display = "block";
       moveCount = 0;
-
       const mailboxX = homthu.offsetLeft;
       const mailboxY = homthu.offsetTop;
       const finalX = mailboxX + 25;
@@ -320,7 +237,6 @@
       bird.style.display = "block";
       flapSound.currentTime = 0;
       flapSound.play();
-
       moveBird(finalX, finalY);
     });
 
@@ -364,22 +280,19 @@
     openLetterBtn.addEventListener("click", () => {
       mainScreen.classList.add("fade-out");
       openLetterBtn.style.display = "none";
-
       setTimeout(() => {
         mainScreen.style.display = "none";
         letterCover.classList.add("show");
-
-        // Sau 3 giây thì làm mờ bìa và hiện nội dung
         setTimeout(() => {
           letterCover.classList.add("fade-out");
-
           setTimeout(() => {
             letterCover.style.display = "none";
             letterContent.classList.add("show");
             setTimeout(() => {
               document.getElementById("noteBox").classList.add("show");
+              // goodSound.volume = 0.1;
+              // goodSound.play(); // đã tắt nhạc good.mp3
             }, 9500);
-
           }, 1000);
         }, 2000);
       }, 1000);
