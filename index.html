@@ -27,143 +27,131 @@
     }
 
     #loadGif { width: 200px; }
-
     #startIntroBtn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 18px;
-      background-color: #ef5da8;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      display: none;
-      cursor: pointer;
+      margin-top: 20px; padding: 10px 20px;
+      font-size: 18px; background-color: #ef5da8;
+      color: white; border: none; border-radius: 8px;
+      display: none; cursor: pointer;
     }
 
     #welcomeScreen {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: #ffe6f0;
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 900;
+      position: absolute; width: 100%; height: 100%;
+      background-color: #ffe6f0; display: none;
+      flex-direction: column; align-items: center;
+      justify-content: center; z-index: 900;
     }
-
     #welcomeImg { width: 300px; margin-bottom: 20px; }
-
     #startBtn {
-      padding: 12px 20px;
-      font-size: 18px;
-      background-color: #efa2cf;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
+      padding: 12px 20px; font-size: 18px;
+      background-color: #efa2cf; color: white;
+      border: none; border-radius: 8px; cursor: pointer;
       animation: blink 1s infinite;
     }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
 
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-
-    #mainScreen {
-      display: none;
-      transition: opacity 1s ease;
-    }
+    #mainScreen { display: none; transition: opacity 1s ease; }
     .fade-out { opacity: 0; }
 
-    #nha, #honuoc, #homthu, #bird, #mattroi, #dammay, #dammay2, #thongbao {
-      position: absolute;
-    }
-
-    #nha {
-      width: 550px; height: 550px;
-      left: 30px; top: calc(25% - 175px);
-      z-index: 1;
-    }
-
+    #nha,#honuoc,#homthu,#bird,#mattroi,#dammay,#dammay2,#thongbao { position: absolute; }
+    #nha { width: 550px; height: 550px; left: 30px; top: calc(25% - 175px); z-index: 1; }
     #honuoc { width: 300px; height: 300px; bottom: 0; right: 0; z-index: 0; }
-
     #homthu { width: 200px; height: 200px; left: calc(50% - 100px); top: calc(50% - 100px); z-index: 1; }
-
     #bird { width: 150px; display: none; transition: all 0.5s ease-in-out; z-index: 2; }
-
     #mattroi { width: 100px; height: 100px; top: 40px; left: 60px; z-index: 0; }
-
-    #dammay, #dammay2 { width: 250px; height: 150px; z-index: 0; }
+    #dammay,#dammay2 { width: 250px; height: 150px; z-index: 0; }
     #dammay { top: 30px; left: calc(50% + 50px); }
     #dammay2 { top: 10px; left: calc(50% - 250px); }
-
     #thongbao { width: 200px; height: 150px; bottom: 100px; right: 350px; display: none; z-index: 1; }
 
     #message {
-      position: absolute;
-      width: 100%; text-align: center;
-      top: 75%; font-size: 28px;
-      font-weight: bold; color: #d63384;
-      opacity: 0; transition: opacity 1s ease-in-out;
+      position: absolute; width: 100%; text-align: center;
+      top: 75%; font-size: 28px; font-weight: bold;
+      color: #d63384; opacity: 0; transition: opacity 1s ease-in-out;
     }
 
     #openLetterBtn {
-      position: absolute;
-      top: 82%; left: 50%; transform: translateX(-50%);
-      padding: 12px 24px;
-      font-size: 18px;
-      background-color: #ff6699;
-      color: white; border: none; border-radius: 8px;
-      cursor: pointer; display: none;
-      animation: blink 1s infinite;
-      z-index: 5;
+      position: absolute; top: 82%; left: 50%; transform: translateX(-50%);
+      padding: 12px 24px; font-size: 18px;
+      background-color: #ff6699; color: white;
+      border: none; border-radius: 8px; cursor: pointer;
+      display: none; animation: blink 1s infinite; z-index: 5;
     }
 
-    #letterCover, #letterContent {
-      position: absolute;
-      width: 600px; height: 700px;
-      top: 50%; left: 50%; transform: translate(-50%, -50%);
-      opacity: 0; display: none;
-      transition: opacity 1s ease; z-index: 10;
+    #letterCover,#letterContent {
+      position: absolute; width: 600px; height: 700px;
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      opacity: 0; display: none; transition: opacity 1s ease; z-index: 10;
     }
-
-    #letterCover.show, #letterContent.show { display: block; opacity: 1; }
+    #letterCover.show,#letterContent.show { display:block; opacity:1; }
     #letterCover.fade-out { opacity: 0; }
 
     #noteBox {
-      position: absolute;
-      top: 80%; right: 30px;
+      position: absolute; top: 80%; right: 30px;
       width: 350px; padding: 12px;
       background-color: #fff0f5;
-      border: 2px dashed #d63384;
-      border-radius: 10px;
+      border: 2px dashed #d63384; border-radius: 10px;
       font-size: 16px; color: #d63384; font-weight: bold;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      opacity: 0; display: none;
-      transition: opacity 1s ease; z-index: 15;
+      opacity: 0; display: none; transition: opacity 1s ease; z-index: 15;
     }
-    #noteBox.show { display: block; opacity: 1; }
+    #noteBox.show { display:block; opacity:1; }
 
-    audio, video { display: none; }
+    /* Box chat */
+    #chatBox {
+      position: absolute;
+      top: 50%; left: calc(50% - 350px - 320px); /* bên trái lá thư */
+      transform: translateY(-50%);
+      width: 280px;
+      padding: 15px;
+      background-color: #fff;
+      border: 2px solid #d63384;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none; z-index: 20;
+    }
+    #chatBox h3 {
+      margin: 0 0 10px 0;
+      font-size: 16px; color: #d63384;
+      text-align: center;
+    }
+    #chatBox textarea {
+      width: 100%; height: 80px;
+      border: 1px solid #ccc; border-radius: 6px;
+      padding: 5px; resize: none; margin-bottom: 10px;
+    }
+    #chatBox button {
+      width: 100%; padding: 8px; background: #ef5da8;
+      color: white; border: none; border-radius: 6px;
+      cursor: pointer;
+    }
+    #thankMsg {
+      position: absolute;
+      top: 50%; left: calc(50% - 350px - 320px);
+      transform: translateY(-50%);
+      font-size: 18px; font-weight: bold;
+      color: #d63384;
+      display: none; z-index: 20;
+    }
+
+    audio, video { display:none; }
   </style>
 </head>
 <body>
 
-  <!-- Màn hình mở đầu -->
+  <!-- Intro -->
   <div id="introScreen">
     <img id="loadGif" src="load.gif" alt="Loading..." />
     <button id="startIntroBtn">👉Start👈</button>
     <audio id="helloSound" src="hello.mp3"></audio>
   </div>
 
-  <!-- Màn hình chào -->
+  <!-- Welcome -->
   <div id="welcomeScreen">
     <img id="welcomeImg" src="hellocutee.gif" alt="Xin chào" />
     <button id="startBtn">Click tiếp vào đây nèe !!!</button>
   </div>
 
-  <!-- Màn hình chính -->
+  <!-- Main -->
   <div id="mainScreen">
     <img id="nha" src="nha222.png" alt="Ngôi nhà" />
     <img id="homthu" src="homthu.png" alt="Hòm thư" />
@@ -183,119 +171,106 @@
 
   <button id="openLetterBtn">Ấn vào đây để mở thư nha ><</button>
   <img id="letterCover" src="biathu.jpg" alt="Bìa thư" />
-  <img id="letterContent" src="thuungtuyen.jpg" alt="Nội dung thư" />
+  <img id="letterContent" src="noidungthu.jpg" alt="Nội dung thư" />
+
+  <!-- Box chat -->
+  <div id="chatBox">
+    <h3>Gửi phản hồi ở đây nhé !</h3>
+    <textarea id="chatInput" placeholder="Nhập phản hồi..."></textarea>
+    <button id="sendBtn">Gửi</button>
+  </div>
+  <div id="thankMsg">Cảm ơn đã phản hồi</div>
 
   <script>
-    const introScreen = document.getElementById("introScreen");
-    const loadGif = document.getElementById("loadGif");
-    const startIntroBtn = document.getElementById("startIntroBtn");
-    const welcomeScreen = document.getElementById("welcomeScreen");
-    const helloSound = document.getElementById("helloSound");
-    const startBtn = document.getElementById("startBtn");
-    const bird = document.getElementById("bird");
-    const message = document.getElementById("message");
-    const flapSound = document.getElementById("flapSound");
-    const bellSound = document.getElementById("bellSound");
-    const homthu = document.getElementById("homthu");
-    const openLetterBtn = document.getElementById("openLetterBtn");
-    const mainScreen = document.getElementById("mainScreen");
-    const letterCover = document.getElementById("letterCover");
-    const letterContent = document.getElementById("letterContent");
-    const goodSound = document.getElementById("goodSound");
-    let moveCount = 0;
-    const maxMoves = 30;
-    let currentX = window.innerWidth - 170;
-    let currentY = 30;
+    const introScreen=document.getElementById("introScreen");
+    const loadGif=document.getElementById("loadGif");
+    const startIntroBtn=document.getElementById("startIntroBtn");
+    const welcomeScreen=document.getElementById("welcomeScreen");
+    const helloSound=document.getElementById("helloSound");
+    const startBtn=document.getElementById("startBtn");
+    const bird=document.getElementById("bird");
+    const message=document.getElementById("message");
+    const flapSound=document.getElementById("flapSound");
+    const bellSound=document.getElementById("bellSound");
+    const homthu=document.getElementById("homthu");
+    const openLetterBtn=document.getElementById("openLetterBtn");
+    const mainScreen=document.getElementById("mainScreen");
+    const letterCover=document.getElementById("letterCover");
+    const letterContent=document.getElementById("letterContent");
+    const goodSound=document.getElementById("goodSound");
+    const chatBox=document.getElementById("chatBox");
+    const sendBtn=document.getElementById("sendBtn");
+    const thankMsg=document.getElementById("thankMsg");
+    let moveCount=0;
+    const maxMoves=30;
+    let currentX=window.innerWidth-170;
+    let currentY=30;
 
-    window.onload = () => {
-      setTimeout(() => {
-        loadGif.style.display = "none";
-        startIntroBtn.style.display = "block";
-      }, 2500);
+    window.onload=()=>{
+      setTimeout(()=>{ loadGif.style.display="none"; startIntroBtn.style.display="block"; },2500);
     };
 
-    startIntroBtn.addEventListener("click", () => {
-      setTimeout(() => {
-        helloSound.volume = 0.3;
-        helloSound.play();
-      }, 10);
-      introScreen.style.display = "none";
-      welcomeScreen.style.display = "flex";
+    startIntroBtn.addEventListener("click",()=>{
+      setTimeout(()=>{ helloSound.volume=0.3; helloSound.play(); },10);
+      introScreen.style.display="none"; welcomeScreen.style.display="flex";
     });
 
-    startBtn.addEventListener("click", () => {
-      welcomeScreen.style.display = "none";
-      mainScreen.style.display = "block";
-      moveCount = 0;
-      const mailboxX = homthu.offsetLeft;
-      const mailboxY = homthu.offsetTop;
-      const finalX = mailboxX + 25;
-      const finalY = mailboxY - 80;
-
-      bird.style.left = `${currentX}px`;
-      bird.style.top = `${currentY}px`;
-      bird.style.display = "block";
-      flapSound.currentTime = 0;
-      flapSound.play();
-      moveBird(finalX, finalY);
+    startBtn.addEventListener("click",()=>{
+      welcomeScreen.style.display="none"; mainScreen.style.display="block"; moveCount=0;
+      const mailboxX=homthu.offsetLeft; const mailboxY=homthu.offsetTop;
+      const finalX=mailboxX+25; const finalY=mailboxY-80;
+      bird.style.left=`${currentX}px`; bird.style.top=`${currentY}px`;
+      bird.style.display="block"; flapSound.currentTime=0; flapSound.play();
+      moveBird(finalX,finalY);
     });
 
-    function moveBird(finalX, finalY) {
-      if (moveCount < maxMoves) {
-        let deltaX, deltaY;
-        if (moveCount < maxMoves / 2) {
-          deltaX = (Math.random() - 0.7) * 100;
-          deltaY = Math.random() * 40;
-        } else {
-          const toCenterX = finalX - currentX;
-          const toCenterY = finalY - currentY;
-          deltaX = toCenterX * 0.2 + (Math.random() - 0.5) * 40;
-          deltaY = toCenterY * 0.2 + (Math.random() - 0.5) * 30;
+    function moveBird(finalX,finalY){
+      if(moveCount<maxMoves){
+        let deltaX,deltaY;
+        if(moveCount<maxMoves/2){ deltaX=(Math.random()-0.7)*100; deltaY=Math.random()*40; }
+        else{
+          const toCenterX=finalX-currentX; const toCenterY=finalY-currentY;
+          deltaX=toCenterX*0.2+(Math.random()-0.5)*40;
+          deltaY=toCenterY*0.2+(Math.random()-0.5)*30;
         }
-
-        currentX += deltaX;
-        currentY += deltaY;
-        currentX = Math.min(window.innerWidth - 150, Math.max(0, currentX));
-        currentY = Math.min(window.innerHeight - 150, Math.max(0, currentY));
-        bird.style.left = `${currentX}px`;
-        bird.style.top = `${currentY}px`;
-        moveCount++;
-        setTimeout(() => moveBird(finalX, finalY), 300);
-      } else {
-        bird.style.left = `${finalX}px`;
-        bird.style.top = `${finalY}px`;
-        flapSound.pause();
-        flapSound.currentTime = 0;
-        bellSound.play();
-        setTimeout(() => {
-          message.style.opacity = 1;
-          document.getElementById("thongbao").style.display = "block";
-          setTimeout(() => {
-            openLetterBtn.style.display = "block";
-          }, 1500);
-        }, 800);
+        currentX+=deltaX; currentY+=deltaY;
+        currentX=Math.min(window.innerWidth-150,Math.max(0,currentX));
+        currentY=Math.min(window.innerHeight-150,Math.max(0,currentY));
+        bird.style.left=`${currentX}px`; bird.style.top=`${currentY}px`;
+        moveCount++; setTimeout(()=>moveBird(finalX,finalY),300);
+      }else{
+        bird.style.left=`${finalX}px`; bird.style.top=`${finalY}px`;
+        flapSound.pause(); flapSound.currentTime=0; bellSound.play();
+        setTimeout(()=>{
+          message.style.opacity=1; document.getElementById("thongbao").style.display="block";
+          setTimeout(()=>{ openLetterBtn.style.display="block"; },1500);
+        },800);
       }
     }
 
-    openLetterBtn.addEventListener("click", () => {
-      mainScreen.classList.add("fade-out");
-      openLetterBtn.style.display = "none";
-      setTimeout(() => {
-        mainScreen.style.display = "none";
-        letterCover.classList.add("show");
-        setTimeout(() => {
+    openLetterBtn.addEventListener("click",()=>{
+      mainScreen.classList.add("fade-out"); openLetterBtn.style.display="none";
+      setTimeout(()=>{
+        mainScreen.style.display="none"; letterCover.classList.add("show");
+        setTimeout(()=>{
           letterCover.classList.add("fade-out");
-          setTimeout(() => {
-            letterCover.style.display = "none";
-            letterContent.classList.add("show");
-            setTimeout(() => {
+          setTimeout(()=>{
+            letterCover.style.display="none"; letterContent.classList.add("show");
+            setTimeout(()=>{
               document.getElementById("noteBox").classList.add("show");
-              // goodSound.volume = 0.1;
-              // goodSound.play(); // đã tắt nhạc good.mp3
-            }, 9500);
-          }, 1000);
-        }, 2000);
-      }, 1000);
+              // goodSound.volume=0.1; goodSound.play(); // đã tắt nhạc good.mp3
+
+              // Hiện chatBox sau 3 giây khi thư hiện ra
+              setTimeout(()=>{ chatBox.style.display="block"; },3000);
+
+            },9500);
+          },1000);
+        },2000);
+      },1000);
+    });
+
+    sendBtn.addEventListener("click",()=>{
+      chatBox.style.display="none"; thankMsg.style.display="block";
     });
   </script>
 </body>
